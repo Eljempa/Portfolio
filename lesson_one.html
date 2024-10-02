@@ -22,7 +22,7 @@
     </header>
     <main>
         <section>
-            <p>Welcome to my first webpage.</p>
+            <p id="greeting">This will be replaced with a greeting.</p>
         </section>
         <section id="about">
             <h2>About Me</h2>
@@ -45,6 +45,21 @@
     <footer>
         <p> (c) 2024 Eldridge Jempa </p>
     </footer>
+
+    <script>
+        const greeting = document.getElementById('greeting');
+        const date = new Date();
+        const hour = date.getHours();
+
+        if (hour < 12) {
+            greeting.innerText = 'Good morning! Welcome to my portfolio.';
+        } else if (hour < 18) {
+            greeting.innerText = 'Good afternoon! Welcome to my portfolio.';
+        } else {
+            greeting.innerText = 'Good evening! Welcome to my portfolio.';
+        }
+    </script>
+
 </body>
 
 </html>
