@@ -24,6 +24,21 @@
         <section>
             <p id="greeting">This will be replaced with a greeting.</p>
         </section>
+
+        <Script>
+            const greeting = document.getElementById('greeting');
+            const date = new Date();
+            const hour = date.getHours();
+
+            if (hour < 12) {
+                greeting.innerText = 'Good morning! Welcome to my portfolio.';
+            } else if (hour < 18) {
+                greeting.innerText = 'Good afternoon! Welcome to my portfolio.';
+            } else {
+                greeting.innerText = 'Good evening! Welcome to my portfolio.';
+            }
+        </Script>
+
         <section id="about">
             <h2>About Me</h2>
             <p>My Name is Eldridge Jempa. A fouth Year student at the Copperbelt University, also known as CBU.
@@ -33,32 +48,73 @@
                 now.
             </p>
         </section>
+
+        <section id="skills">
+            <h2>My Skills</h2>
+            <ul id="skills-list"></ul>
+        </section>
+
+        <script>
+            let skills = ["HTML", "CSS", "JavaScript", "GitHub"];
+            let skillsList = document.getElementById('skills-list');
+
+
+            skills.forEach(function (skill) {
+                let listItem = document.createElement('li');
+                listItem.textContent = skill;
+                skillsList.appendChild(listItem);
+
+        </script>
+
         <section id="projects">
             <h2>My Projects</h2>
             <p>Nothing in this section yet</p>
         </section>
         <section id="contact">
             <h2>Contact Me</h2>
-            <p>Email: eldridge.jempa@gmail.com</p>
+            <form id="contactForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required><br>
+
+                <label for="email">Email: </label>
+                <input type="email" id="email" name="email" required><br>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea><br>
+
+                <button type="submit">Submit</button>
+            </form>
+            <p id="formMessage"></p>
         </section>
+
+        <script>
+                const form = document.getElementById('contactForm');
+                const formMessage = document.getElementById('formMessage');
+
+                form.addEventListener('submit', function (event) {
+                    event.preventDefault(); // Prevent form from submitting automatically
+
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const message = document.getElementById('message').value;
+
+                    if (name === '' || email === '' || message === '') {
+                        formMessage.innerText = 'Please fill out all fields.';
+                        formMessage.style.color = 'red';
+                    } else {
+                        formMessage.innerText = 'Thank you for your message!';
+                        formMessage.style.color = 'green';
+                    }
+                });
+
+            });
+
+        </script>
+
     </main>
     <footer>
-        <p> (c) 2024 Eldridge Jempa </p>
+        <p> (c) 2024 eldridge.jempa@gmail.com </p>
     </footer>
-
-    <script>
-        const greeting = document.getElementById('greeting');
-        const date = new Date();
-        const hour = date.getHours();
-
-        if (hour < 12) {
-            greeting.innerText = 'Good morning! Welcome to my portfolio.';
-        } else if (hour < 18) {
-            greeting.innerText = 'Good afternoon! Welcome to my portfolio.';
-        } else {
-            greeting.innerText = 'Good evening! Welcome to my portfolio.';
-        }
-    </script>
 
 </body>
 

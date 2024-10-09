@@ -1,3 +1,4 @@
+/*Styling the body*/
 body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: #c4dfda;
@@ -7,6 +8,7 @@ body {
     padding: 0;
 }
 
+/*Styling the page header*/
 header {
     background-color: #333;
     color: #fff;
@@ -14,34 +16,52 @@ header {
     padding: 10px 0;
 }
 
+/*Styling the menu*/
 nav ul {
     list-style: none;
-    margin: 0px 10px
+    margin: 0px 10px;
+    display: flex;
 }
 
+/*Styling individual list elements*/
+nav ul li {
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
+/*Styling  list text*/
 nav ul li a {
     color: linen;
     text-decoration: none;
 }
 
+/* Change text appearance on hover */
+nav ul li a:hover {
+    color: #c4dfda;
+}
+
+/*Section styling*/
 section {
-    margin: 20px;
+    margin: 20px auto;
     padding: 10px;
     background-color: rgb(255, 255, 255);
     border-radius: 5px;
 }
 
+/*Styling header 1*/
 h1 {
     color: rgb(210, 202, 83);
 }
 
+/*Paragraph styling*/
 p {
     color: black;
 }
 
+/*Footer styling*/
 footer {
     background-color: rgb(251, 151, 151);
-    margin: 20px;
+    margin: 0px auto;
     padding: 10px;
     text-align: center;
     position: relative;
@@ -54,5 +74,64 @@ footer {
         display: block;
         margin: 10px 0;
     }
+}
 
+/* Styling the form */
+form {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    margin-left: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)
+}
+
+/* Styling input fields */
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    resize: none;
+}
+
+/* Change input focus appearance */
+input:focus,
+textarea:focus {
+    border-color: #0066cc;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 102, 204, 0.5);
+}
+
+/* Styling labels */
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+}
+
+/* Styling the submit button */
+button[type="submit"] {
+    background-color: #4cb150;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+}
+
+/* Change button appearance on hover */
+button[type="submit"]:hover {
+    background-color: #2d6930;
 }
