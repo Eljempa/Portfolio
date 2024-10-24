@@ -79,18 +79,6 @@
             <ul id="skills-list"></ul>
         </section>
 
-        <script>
-            let skills = ["HTML", "CSS", "JavaScript", "GitHub"];
-            let skillsList = document.getElementById('skills-list');
-
-
-            skills.forEach(function (skill) {
-                let listItem = document.createElement('li');
-                listItem.textContent = skill;
-                skillsList.appendChild(listItem);
-
-        </script>
-
         <section id="projects">
             <h2>My Projects</h2>
             <p>Nothing in this section yet</p>
@@ -114,39 +102,94 @@
         </section>
 
         <script>
-                const contactHeader = document.querySelector('#contact h2');
 
-                contactHeader.addEventListener('mouseover', function () {
-                    contactHeader.style.color = '#ff6347'; // Changes text color to tomato on hover
+            let skills = ["HTML", "CSS", "JavaScript", "GitHub"];
+            let skillsList = document.getElementById('skills-list');
+
+            skills.forEach(function (skill) {
+                let listItem = document.createElement('li');
+                listItem.textContent = skill;
+                skillsList.appendChild(listItem);
+            });
+
+            const contactHeader = document.querySelector('#contact h2');
+            contactHeader.addEventListener('mouseover', function () {
+                contactHeader.style.color = '#ff6347'; // Changes text color to tomato on hover
+            });
+
+            contactHeader.addEventListener('mouseout', function () {
+                contactHeader.style.color = ''; // Resets color when the mouse leaves
+            });
+
+            const form = document.getElementById('contactForm');
+            const formMessage = document.getElementById('formMessage');
+
+            function validateInput(field) {
+                if (field.value === '') {
+                    field.style.borderColor = 'red';
+                } else {
+                    field.style.borderColor = '';
+                }
+            }
+
+            function sendFormData(name, email, message) {
+                const xhr = new XMLHttpRequest(); // new XMLHttpRequest Object
+                xhr.open('POST', 'https://jsonplaceholder.typicode.com/posts', true);// simulate submission
+                xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+
+                // Prepare the data in JSON format
+                const formData = JSON.stringify({
+                    name: name,
+                    email: email,
+                    message: message
                 });
 
-                contactHeader.addEventListener('mouseout', function () {
-                    contactHeader.style.color = ''; // Resets color when the mouse leaves
-                });
-
-
-                const form = document.getElementById('contactForm');
-                const formMessage = document.getElementById('formMessage');
-
-                form.addEventListener('submit', function (event) {
-                    event.preventDefault(); // Prevent form from submitting automatically
-
-                    const name = document.getElementById('name').value;
-                    const email = document.getElementById('email').value;
-                    const message = document.getElementById('message').value;
-
-                    if (name === '' || email === '' || message === '') {
-                        formMessage.innerText = 'Please fill out all fields.';
-                        formMessage.style.color = 'red';
-                    } else {
-                        formMessage.innerText = 'Thank you for your message!';
-                        formMessage.style.color = 'green';
+                // Handle the response
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                        if (xhr.status === 201) {
+                            formMessage.innerText = 'Form Submitted Successfully!';
+                            formMessage.style.color = 'green';
+                        } else {
+                            formMessage.innerText = 'An error occurred. Please try again.';
+                            formMessage.style.color = 'red';
+                        }
                     }
-                });
+                };
 
+                xhr.send(formData);
+            }
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault(); // Prevent form from submitting automatically
+
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const message = document.getElementById('message').value;
+
+                // Simple Validation
+                if (name && email && message) {
+                    sendFormData(name, email, message);
+                } else {
+                    formMessage.innerText = 'Please fill out all fields.';
+                    formMessage.style.color = 'red';
+                }
+            });
+
+            document.getElementById("name").addEventListener('input', function () {
+                validateInput(this);
+            });
+
+            document.getElementById('email').addEventListener('input', function () {
+                validateInput(this);
+            });
+
+            document.getElementById('message').addEventListener('input', function () {
+                validateInput(this);
             });
 
         </script>
+
 
     </main>
     <footer>

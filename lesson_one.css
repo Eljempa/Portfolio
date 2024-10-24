@@ -103,10 +103,9 @@ textarea {
     resize: none;
 }
 
-/* Change input focus appearance */
+/* Change input focus appearance*/
 input:focus,
 textarea:focus {
-    border-color: #0066cc;
     outline: none;
     box-shadow: 0 0 5px rgba(0, 102, 204, 0.5);
 }
