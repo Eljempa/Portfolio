@@ -20,6 +20,31 @@
             </ul>
         </nav>
     </header>
+    <script>
+        const header = document.querySelector('header');
+        const originalColor = header.style.backgroundColor;
+        let isClicked = false;
+
+        header.addEventListener('click', () => {
+
+            if (!isClicked) {
+                header.style.backgroundColor = '#f0f0f0';
+                alert('You clicked the header!');
+
+                isClicked = true;
+
+                setTimeout(() => {
+                    header.style.backgroundColor = originalColor;
+                    isClicked = false;
+                }, 3000);
+            } else {
+                header.style.backgroundColor = originalColor;
+                isClicked = false;
+
+            }
+        });
+    </script>
+
     <main>
         <section>
             <p id="greeting">This will be replaced with a greeting.</p>
@@ -70,6 +95,7 @@
             <h2>My Projects</h2>
             <p>Nothing in this section yet</p>
         </section>
+
         <section id="contact">
             <h2>Contact Me</h2>
             <form id="contactForm">
@@ -88,6 +114,17 @@
         </section>
 
         <script>
+                const contactHeader = document.querySelector('#contact h2');
+
+                contactHeader.addEventListener('mouseover', function () {
+                    contactHeader.style.color = '#ff6347'; // Changes text color to tomato on hover
+                });
+
+                contactHeader.addEventListener('mouseout', function () {
+                    contactHeader.style.color = ''; // Resets color when the mouse leaves
+                });
+
+
                 const form = document.getElementById('contactForm');
                 const formMessage = document.getElementById('formMessage');
 
